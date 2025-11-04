@@ -1,0 +1,187 @@
+Variable / Field Name,Form Name,Section Header,Field Type,Field Label,"Choices, Calculations, OR Slider Labels",Field Note,Text Validation Type OR Show Slider Number,Text Validation Min,Text Validation Max,Identifier?,Branching Logic (Show field only if...),Required Field?,Custom Alignment,Question Number (surveys only),Matrix Group Name,Matrix Ranking?,Field Annotation
+record_id,coding_assignment,,text,Record ID,,,,,,,,,,,,,
+quorum_id_number,coding_assignment,,text,Quorum ID Number [DO NOT EDIT THIS],,Please input the Quorum ID number of the post,integer,0,1E+14,y,,y,,,,,
+dbl_code,coding_assignment,,yesno,Double Code?,,,,,,,,y,,,,,
+coder,coding_assignment,,dropdown,Coder Name,"1, VA | 2, IN | 3, JKV | 4, OB | 5, AS | 6, AC | 7, KK | 99, Other",,,,,,,,,,,,
+coder_2,coding_assignment,,dropdown,Coder 2 Name,"1, VA | 2, IN | 3, JKV | 4, OB | 5, AS | 6, AC | 7, KK | 99, Other",,,,,,[dbl_code] = '1',,,,,,
+tweet,coding_assignment,,notes,Tweet: Please copy and paste tweet into this text box,,,,,,,,,,,,,
+specific_event,xtwitter_coding_instrument,"GENERAL CONTENT ANALYSIS
+
+Descriptions of Gun Violence: How the post describes the characteristics of gun violence
+
+[tweet]",radio,Does the post mention/refer to a specific event or category of gun violence?,"1, Yes | 0, No",,,,,,,,,,event_descriptions,,"As opposed to ""gun violence"" at large"
+location,xtwitter_coding_instrument,,radio,Does the post mention/refer to a specific location of a specific shooting or where violence occurs?,"1, Yes | 0, No",,,,,,,,,,event_descriptions,,
+relationship,xtwitter_coding_instrument,,radio,Does the post mention/refer to the shooter's relationship to victim?,"1, Yes | 0, No",,,,,,,,,,event_descriptions,,
+vigil,xtwitter_coding_instrument,,radio,"Does the post mention a non-legislative vigil/remembrance event/campaign (ex. wear orange)/or awareness period? (If it includes a call to action such as attend or wear, please select the call to action accordingly)","1, Yes | 0, No",,,,,,,,,,event_descriptions,,
+persons_mentioned,xtwitter_coding_instrument,,checkbox,"Who specifically, if anyone, is mentioned in the post?","1, Victim only (Select this if victim and shooter are the same - for instance in the setting of self-directed violence) | 2, Shooter only | 3, Victim and Shooter | 4, No mention of victim or shooter in this post",,,,,,,,,,,,
+type_of_shooting,xtwitter_coding_instrument,,checkbox,Type of Shooting,"1, Mass Shooting | 2, Suicide or Intentional Self-Inflicted Harm | 3, Unintentional or Accidental Injury | 4, Interpersonal or Community Violence | 5, Other",,,,,,[specific_event] = '1',,,,,,
+other_shooting,xtwitter_coding_instrument,,text,Specify Other Type of Shooting,,,,,,,[type_of_shooting(5)] = '1',,,,,,
+type_of_location,xtwitter_coding_instrument,,checkbox,Type of Location Specified,"1, School/School Grounds | 2, Home | 3, Place of Worship | 4, Neighborhood/Community | 5, Place of Business | 6, City/County | 7, Other",,,,,,[location] = '1',,,,,,
+other_location,xtwitter_coding_instrument,,text,Specify Other Location,,,,,,,[type_of_location(7)] = '1',,,,,,
+type_of_relationship,xtwitter_coding_instrument,,checkbox,Relationship of Shooter to the Victim,"1, Intimate Partner | 2, Parent/Guardian | 3, Family Member | 4, Law Enforcement | 5, Other Authority Figure | 6, Unknown to Victim | 7, Other Relationship",,,,,,[relationship] = '1',,,,,,"Specific references to violence towards a spouse, intimate partner, dating partner, or a person with whom someone shares a child
+violence directed towards a child enacted by parent/guardian
+that is not parent or guardian (sibling for example)
+Includes teacher, school personnel, counselor
+Has to specifically say that shooter was unknown to victim"
+other_relationship,xtwitter_coding_instrument,,text,Specify Other Relationship,,,,,,,[type_of_relationship(7)] = '1',,,,,,
+expressions,xtwitter_coding_instrument,"Expressions: Times that we see clear cut examples of emotions from these three categories. 
+
+[tweet]",checkbox,Expressions Used in Tweets,"1, ""Thoughts and Prayers"" or a variation of this | 2, Solidarity | 3, Remembrance | 4, None of the Above",,,,,,,,,,,,
+gcall_to_action,xtwitter_coding_instrument,"Call to Action: A ""call to action"" in media coverage is defined as any information that the public can utilize to facilitate individual or collective action.
+
+[tweet]",radio,General Call to Action,"1, Yes | 0, No",,,,,,,,,,c2a,,
+scall_to_action,xtwitter_coding_instrument,,radio,Specific Call to Action,"1, Yes | 0, No",,,,,,,,,,c2a,,
+voting_c2a,xtwitter_coding_instrument,,radio,Is the Specific Call to Action to Vote?,"1, Yes | 0, No",,,,,,[scall_to_action] = '1',,,,c2a,,"Many tweets say to ""vote"" or something equivalent, which is why this field is added"
+victim_race,xtwitter_coding_instrument,"Victim(s) Characteristics
+Please select N/A if a victim is not named or mentioned
+**If the shooter is also the victim (ie in the case of suicide, self-inflicted, unintentional, or accidental) make sure it is specified type of shooting above and please only fill out the ""victim"" characteristics
+[tweet]",checkbox,Does the post mention/refer to their race or ethnicity?,"1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_age,xtwitter_coding_instrument,,checkbox,Does the post mention/refer to the their age?,"1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_sex_gender,xtwitter_coding_instrument,,checkbox,"Does the post mention/refer to their sex, gender, or sexual orientation?","1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_criminal,xtwitter_coding_instrument,,checkbox,"Does the post reference to criminal and/or civil record, incarceration, or interaction with criminal justice system?","1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_mental,xtwitter_coding_instrument,,checkbox,"Does the post mention/refer to the shooter's mental, behavioral, or psychiatric health?","1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_veteran,xtwitter_coding_instrument,,checkbox,"Does the post mention veteran status for the victim ? (if self-inflicted, please only input in victim characteristics)","1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_stigma,xtwitter_coding_instrument,,checkbox,Is stigmatizing language used in reference to the victim?,"1, Yes",,,,,,[persons_mentioned(1)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_v,,
+victim_age_1,xtwitter_coding_instrument,,checkbox,Age of victim mentioned,"1, 0-17y | 2, 18-34y | 3, 35-64y | 4, 65+",,,,,,[victim_age(1)] = '1',,,,,,
+victim_race_1,xtwitter_coding_instrument,,checkbox,Race or ethnicity mentioned,"1, Black | 2, White | 3, Hispanic or Latino | 4, Asian (Includes Asian American, Native Hawaiian or Pacific Islander) | 5, Indigenous (includes American Indian or Alaska Native) | 6, General mention of ""race/racial"" or ""ethnicity"" | 7, Other",,,,,,[victim_race(1)] = '1',,,,,,
+victim_race_other,xtwitter_coding_instrument,,text,"If other race, please specify",,,,,,,[victim_race_1(7)] = '1',,,,,,
+victim_sex_gender1,xtwitter_coding_instrument,,checkbox,"Sex, Gender, or Sexual Orientation mentioned","1, Male | 2, Female | 3, Trans, Non-Binary, or LGBTQIA identities mentioned | 4, No mention",,,,,,[victim_sex_gender(1)] = '1',,,,,,
+victim_specify_sex,xtwitter_coding_instrument,,checkbox,Any specifications from the dropdown provided?,"1, Cis-Male | 2, Trans-Male | 3, Cis-Female | 4, Trans-Female | 5, Non-Binary | 6, Transgender | 7, Lesbian/Gay | 8, Bisexual | 9, Queer | 10, Intersex | 11, Asexual | 12, Other",,,,,,[victim_sex_gender1(3)] = '1',,,,,,
+victim_sex_other,xtwitter_coding_instrument,,text,"Other sex, gender, or sexual orientation mentioned",,,,,,,[victim_specify_sex(12)] = '1',,,,,,
+victim_mental1,xtwitter_coding_instrument,,checkbox,Specific descriptions of mental health,"1, General Mental Health or Illness | 2, Depression | 3, Anxiety | 4, PTSD | 5, Psychosis | 6, Schizophrenia | 7, History of Psychiatric Hospitalization | 8, Other",,,,,,[victim_mental(1)] = '1',,,,,,
+victim_mental_other,xtwitter_coding_instrument,,text,Specify other mental health description,,,,,,,[victim_mental1(8)] = '1',,,,,,
+shooter_race,xtwitter_coding_instrument,"Shooter(s) Characteristics
+Please select N/A if a victim is not named or mentioned
+**If the shooter is also the victim (ie in the case of suicide, self-inflicted, unintentional, or accidental) make sure it is specified type of shooting above and please only fill out the ""victim"" characteristics
+[tweet]",checkbox,Does the post mention/refer to their race or ethnicity?,"1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_age,xtwitter_coding_instrument,,checkbox,Does the post mention/refer to the their age?,"1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_sex_gender,xtwitter_coding_instrument,,checkbox,"Does the post mention/refer to their sex, gender, or sexual orientation?","1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_criminal,xtwitter_coding_instrument,,checkbox,"Does the post reference to criminal and/or civil record, incarceration, or interaction with criminal justice system?","1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_mental,xtwitter_coding_instrument,,checkbox,"Does the post mention/refer to the shooter's mental, behavioral, or psychiatric health?","1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_veteran,xtwitter_coding_instrument,,checkbox,"Does the post mention veteran status for the victim ? (if self-inflicted, please only input in victim characteristics)","1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_stigma,xtwitter_coding_instrument,,checkbox,Is stigmatizing language used in reference to the victim?,"1, Yes",,,,,,[persons_mentioned(2)] = '1' or [persons_mentioned(3)] = '1',,,,characteristics_s,,
+shooter_race_1,xtwitter_coding_instrument,,checkbox,Race or ethnicity mentioned,"1, Black | 2, White | 3, Hispanic or Latino | 4, Asian (Includes Asian American, Native Hawaiian or Pacific Islander) | 5, Indigenous (includes American Indian or Alaska Native) | 6, General mention of ""race/racial"" or ""ethnicity"" | 7, Other",,,,,,[shooter_race(1)] = '1',,,,,,
+shooter_race_other,xtwitter_coding_instrument,,text,"If other race, please specify",,,,,,,[shooter_race_1(7)] = '1',,,,,,
+shooter_age_1,xtwitter_coding_instrument,,checkbox,Age of shooter mentioned,"1, 0-17y | 2, 18-34y | 3, 35-64y | 4, 65+",,,,,,[shooter_age(1)] = '1',,,,,,
+shooter_sex_gender1,xtwitter_coding_instrument,,checkbox,"Sex, Gender, or Sexual Orientation mentioned","1, Male | 2, Female | 3, Trans, Non-Binary, or LGBTQIA identities mentioned",,,,,,[shooter_sex_gender(1)] = '1',,,,,,
+shooter_specify_sex,xtwitter_coding_instrument,,checkbox,Any specifications from the dropdown provided?,"1, Cis-Male | 2, Trans-Male | 3, Cis-Female | 4, Trans-Female | 5, Non-Binary | 6, Transgender | 7, Lesbian/Gay | 8, Bisexual | 9, Queer | 10, Intersex | 11, Asexual | 12, Other",,,,,,[shooter_sex_gender1(3)] = '1',,,,,,
+shooter_sex_other,xtwitter_coding_instrument,,text,"Other sex, gender, or sexual orientation mentioned",,,,,,,[shooter_specify_sex(12)] = '1',,,,,,
+shooter_mental1,xtwitter_coding_instrument,,checkbox,Specific descriptions of mental health,"1, General Mental Health or Illness | 2, Depression | 3, Anxiety | 4, PTSD | 5, Psychosis | 6, Schizophrenia | 7, History of Psychiatric Hospitalization | 8, Other",,,,,,[shooter_mental(1)] = '1',,,,,,
+shooter_mental_other,xtwitter_coding_instrument,,text,Specify other mental health description,,,,,,,[shooter_mental1(8)] = '1',,,,,,
+framing,xtwitter_coding_instrument,"ISSUE FRAMING
+
+Framing: Framing refers to ""underlying structures of belief, perception and appreciation"" on which distinct policy positions depend. It influences the way the issue is constructed, which is critical in influencing which actors get engaged in each process, the policy solutions proposed and the potential windows of opportunity that they were able to open.
+
+[tweet]",checkbox,What frames are used in the tweet/post?,"1, Morality (Sense of Right/Wrong NOT Emotion) | 2, Advocacy/Endorsement | 3, Emotional Appeal or Moral Outrage (Sympathy, Sorrow, Tragedy, or Sense of Injustice) | 4, Cultural Identity | 5, Equality or Equity | 6, Criminology/Policing | 7, Constitutionality/Jurisprudence | 8, Security/Defense/Protection | 9, Public Opinion | 10, Health and/or Public Health | 11, Partisan | 12, Informational (ENTIRE tweet must be informational, is statistics are related to health/public health [ex. morbidity/mortality] make sure to check that as well) | 13, Religiosity or Spirituality | 14, None of the Above Fit",,,,,,,,,,,,
+blame,xtwitter_coding_instrument,"KINGDON'S POLICY FRAMEWORK DOMAINS
+
+Domain 1: The Problem Stream - What are the causes and consequences of firearm violence, how are they framed, and by whom?
+
+Causal or Blame Attribution: Persons, policies, or entities held responsible for firearm violence
+
+[tweet]",checkbox,What or who is blamed for gun violence?,"1, Mental Health and/or Illness | 2, Weak or lax Gun Laws | 3, Increased ownership, access, or availability of Firearms | 4, Decreased possession of firearms (not enough people with guns) | 5, Sociopolitical and Structural Determinants of Health (education, poverty, housing) | 6, Stereotyped/Biased/Racist Beliefs of a group of persons | 7, Guns in the hands of wrong people | 8, Gang Violence | 9, Social Media | 10, Individuals or Groups of Policymakers (ex. Philadelphia Attorney General) | 11, Victim Blaming | 12, Substance Use | 13, Firearm Industry and Commerical Practices | 14, U.S. Gun Culture | 15, The Gun Lobby (NRA, Gun Owners of America) | 16, A Specific Political Party of Affiliation | 17, Hate or Hate Crimes (must specify hate/hate crime, can be co-selected with stereotyped/biased/racist beliefs if the tweet also includes specification around race/religion/sex/etc.). However, if this refers to just hate without specific designation then only select this code. | 18, Other | 19, No blame discussed/not applicable",,,,,,,,,,,,
+blame_party,xtwitter_coding_instrument,,dropdown,"Specific ""Political Party or Affiliation"" Blamed","1, Democrat/Liberal/Left | 2, Republican/Conservative/Right/MAGA | 3, Independent | 4, Other",,,,,,[blame(16)] = '1',,,,,,
+blame_other,xtwitter_coding_instrument,,text,"Specify ""other"" blamed",,,,,,,[blame(18)] = '1',,,,,,
+consequences,xtwitter_coding_instrument,"Consequences of Gun Violence
+
+[tweet]",checkbox,What are the consequences of gun violence specified?,"1, Economic | 2, Physical Health | 3, Mental Health or Illness | 4, Furthering the Cycle of Violence | 5, Secondary Trauma or Co-Victim Consequences (family/community members/siblings) | 6, Well-Being | 7, Other | 8, No consequences discussed",,,,,,,,,,,,
+consequences_other,xtwitter_coding_instrument,,text,"Specify ""other"" consequence",,,,,,,[consequences(7)] = '1',,,,,,
+policy,xtwitter_coding_instrument,"Domain 2: The Policy Stream - Definition: Particular policies proposed for addressing an identified problem, and figuring out if certain policies will work, or if existing policies are effective.
+
+Mentions of Firearm Policies
+
+[tweet]",checkbox,What are the policies mentioned to address gun violence?,"1, Generic or Nonspecific (ex. Reduction Programs, Initiatives, Reforms) | 2, Restrictive Firearm Ownership Policies | 3, Permissive Firearm Ownership Policies | 4, Funding for Community Violence Intervention Programs or Hospital Violence Intervention Programs | 5, Funding for Firearm Research | 6, Address Mental Health and Illness | 7, Address Substance Use Disorder | 8, Funding/Support for Law Enforcement/Police/or Criminal Justice System | 9, Hold the Firearm Industry Accountable | 10, Hold the Gun Lobby Accountable | 11, Address social and structural determinants of health | 12, Other | 13, No policies discussed",,,,,,,,,,,,
+policy_restrictive,xtwitter_coding_instrument,,checkbox,Specify Restrictive Firearm Ownership Policies,"1, Universal/Comprehensive/Expanded Background Checks | 2, Secure Firearm Storage Laws | 3, Child Access Prevention Laws | 4, Extreme Risk Protection Orders (Red-Flag) Laws | 5, Banning Ghost/3D Printed Guns | 6, Permit-to-Purchase | 7, Lost and Stolen Reporting | 8, Assault Weapons Ban | 9, Banning Private Sale of Long Guns | 10, High Capacity Magazine Bans | 11, Waiting Periods | 12, Domestic Violence Protection Orders | 13, Gun Buyback Programs | 14, Microstamping Requirements | 15, Age or Licensing Requirements | 16, None of the Above/Other",,,,,,[policy(2)] = '1',,,,,,
+policy_permissive,xtwitter_coding_instrument,,checkbox,Specify Permissive Firearm Ownership Policies,"1, Stand Your Ground/Castle Doctrine | 2, School Resource Officer | 3, Concealed Carry | 4, Arming Teachers | 5, Open Carry | 6, Preemption Laws | 7, Permitless Carry (Constitutional Carry) | 8, Prohibition on  Firearm Registries | 9, Protection of Lawful Commerce in Arms Act (PLCAA) | 10, Reciprocity Laws | 11, Enhanced Self-Defense Protections | 12, None of the Above/Other",,,,,,[policy(3)] = '1',,,,,,
+policy_other,xtwitter_coding_instrument,,text,"Specity ""other"" policy",,,,,,,[policy(12)] = '1',,,,,,
+addl_notes,xtwitter_coding_instrument,Conclusion,text,"If you have notes to add about the post, feel free to do that here",,,,,,,,,,,,,
+specific_event_2,xtwitter_coding_instrument_double_code,"GENERAL CONTENT ANALYSIS
+
+Descriptions of Gun Violence: How the post describes the characteristics of gun violence
+
+[tweet]",radio,Does the post mention/refer to a specific event or category of gun violence?,"1, Yes | 0, No",,,,,,,,,,event_descriptions_2,,"As opposed to ""gun violence"" at large"
+location_2,xtwitter_coding_instrument_double_code,,radio,Does the post mention/refer to a specific location of a specific shooting or where violence occurs?,"1, Yes | 0, No",,,,,,,,,,event_descriptions_2,,
+relationship_2,xtwitter_coding_instrument_double_code,,radio,Does the post mention/refer to the shooter's relationship to victim?,"1, Yes | 0, No",,,,,,,,,,event_descriptions_2,,
+vigil_2,xtwitter_coding_instrument_double_code,,radio,"Does the post mention a non-legislative vigil/remembrance event/campaign (ex. wear orange)/or awareness period? (If it includes a call to action such as attend or wear, please select the call to action accordingly)","1, Yes | 0, No",,,,,,,,,,event_descriptions_2,,
+persons_mentioned_2,xtwitter_coding_instrument_double_code,,checkbox,"Who specifically, if anyone, is mentioned in the post?","1, Victim only (Select this if victim and shooter are the same - for instance in the setting of self-directed violence) | 2, Shooter only | 3, Victim and Shooter | 4, No mention of victim or shooter in this post",,,,,,,,,,,,
+type_of_shooting_2,xtwitter_coding_instrument_double_code,,checkbox,Type of Shooting,"1, Mass Shooting | 2, Suicide or Intentional Self-Inflicted Harm | 3, Unintentional or Accidental Injury | 4, Interpersonal or Community Violence | 5, Other",,,,,,[specific_event_2] = '1',,,,,,
+other_shooting_2,xtwitter_coding_instrument_double_code,,text,Specify Other Type of Shooting,,,,,,,[type_of_shooting_2(5)] = '1',,,,,,
+type_of_location_2,xtwitter_coding_instrument_double_code,,checkbox,Type of Location Specified,"1, School/School Grounds | 2, Home | 3, Place of Worship | 4, Neighborhood/Community | 5, Place of Business | 6, City/County | 7, Other",,,,,,[location_2] = '1',,,,,,
+other_location_2,xtwitter_coding_instrument_double_code,,text,Specify Other Location,,,,,,,[type_of_location_2(7)] = '1',,,,,,
+type_of_relationship_2,xtwitter_coding_instrument_double_code,,checkbox,Relationship of Shooter to the Victim,"1, Intimate Partner | 2, Parent/Guardian | 3, Family Member | 4, Law Enforcement | 5, Other Authority Figure | 6, Unknown to Victim | 7, Other Relationship",,,,,,[relationship_2] = '1',,,,,,"Specific references to violence towards a spouse, intimate partner, dating partner, or a person with whom someone shares a child
+violence directed towards a child enacted by parent/guardian
+that is not parent or guardian (sibling for example)
+Includes teacher, school personnel, counselor
+Has to specifically say that shooter was unknown to victim"
+other_relationship_2,xtwitter_coding_instrument_double_code,,text,Specify Other Relationship,,,,,,,[type_of_relationship_2(7)] = '1',,,,,,
+expressions_2,xtwitter_coding_instrument_double_code,"Expressions: Times that we see clear cut examples of emotions from these three categories. 
+
+[tweet]",checkbox,Expressions Used in Tweets,"1, ""Thoughts and Prayers"" or a variation of this | 2, Solidarity | 3, Remembrance | 4, None of the Above",,,,,,,,,,,,
+gcall_to_action_2,xtwitter_coding_instrument_double_code,"Call to Action: A ""call to action"" in media coverage is defined as any information that the public can utilize to facilitate individual or collective action.
+
+[tweet]",radio,General Call to Action,"1, Yes | 0, No",,,,,,,,,,c2a_2,,
+scall_to_action_2,xtwitter_coding_instrument_double_code,,radio,Specific Call to Action,"1, Yes | 0, No",,,,,,,,,,c2a_2,,
+voting_c2a_2,xtwitter_coding_instrument_double_code,,radio,Is the Call to Action to Vote?,"1, Yes | 0, No",,,,,,[scall_to_action_2] = '1',,,,c2a_2,,"Many tweets say to ""vote"" or something equivalent, which is why this field is added"
+victim_race_2,xtwitter_coding_instrument_double_code,"Victim(s) Characteristics
+Please select N/A if a victim is not named or mentioned
+**If the shooter is also the victim (ie in the case of suicide, self-inflicted, unintentional, or accidental) make sure it is specified type of shooting above and please only fill out the ""victim"" characteristics
+[tweet]",checkbox,Does the post mention/refer to their race or ethnicity?,"1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_age_2,xtwitter_coding_instrument_double_code,,checkbox,Does the post mention/refer to the their age?,"1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_sex_gender_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post mention/refer to their sex, gender, or sexual orientation?","1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_criminal_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post reference to criminal and/or civil record, incarceration, or interaction with criminal justice system?","1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_mental_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post mention/refer to the shooter's mental, behavioral, or psychiatric health?","1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_veteran_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post mention veteran status for the victim ? (if self-inflicted, please only input in victim characteristics)","1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_stigma_2,xtwitter_coding_instrument_double_code,,checkbox,Is there stigmatizing language used in reference to the victim?,"1, Yes",,,,,,[persons_mentioned_2(1)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_v_2,,
+victim_race_1_2,xtwitter_coding_instrument_double_code,,checkbox,Race or ethnicity mentioned,"1, Black | 2, White | 3, Hispanic or Latino | 4, Asian (Includes Asian American, Native Hawaiian or Pacific Islander) | 5, Indigenous (includes American Indian or Alaska Native) | 6, General mention of ""race/racial"" or ""ethnicity"" | 7, Other",,,,,,[victim_race_2(1)] = '1',,,,,,
+victim_race_other_2,xtwitter_coding_instrument_double_code,,text,"If other race, please specify",,,,,,,[victim_race_1_2(7)] = '1',,,,,,
+victim_age_1_2,xtwitter_coding_instrument_double_code,,checkbox,Age of victim mentioned,"1, 0-17y | 2, 18-34y | 3, 35-64y | 4, 65+",,,,,,[victim_age_2(1)] = '1',,,,,,
+victim_sex_gender1_2,xtwitter_coding_instrument_double_code,,checkbox,"Sex, Gender, or Sexual Orientation mentioned","1, Male | 2, Female | 3, Trans, Non-Binary, or LGBTQIA identities mentioned",,,,,,[victim_sex_gender_2(1)] = '1',,,,,,
+victim_specify_sex_2,xtwitter_coding_instrument_double_code,,checkbox,Any specifications from the dropdown provided?,"1, Cis-Male | 2, Trans-Male | 3, Cis-Female | 4, Trans-Female | 5, Non-Binary | 6, Transgender | 7, Lesbian/Gay | 8, Bisexual | 9, Queer | 10, Intersex | 11, Asexual | 12, Other",,,,,,[victim_sex_gender1_2(3)] = '1',,,,,,
+victim_sex_other_2,xtwitter_coding_instrument_double_code,,text,"Other sex, gender, or sexual orientation mentioned",,,,,,,[victim_specify_sex_2(12)] = '1',,,,,,
+victim_mental1_2,xtwitter_coding_instrument_double_code,,checkbox,Specific descriptions of mental health,"1, General Mental Health or Illness | 2, Depression | 3, Anxiety | 4, PTSD | 5, Psychosis | 6, Schizophrenia | 7, History of Psychiatric Hospitalization | 8, Other",,,,,,[victim_mental_2(1)] = '1',,,,,,
+victim_mental_other_2,xtwitter_coding_instrument_double_code,,text,Specify other mental health description,,,,,,,[victim_mental1_2(8)] = '1',,,,,,
+shooter_race_2,xtwitter_coding_instrument_double_code,"Shooter(s) Characteristics
+Please select N/A if a victim is not named or mentioned
+**If the shooter is also the victim (ie in the case of suicide, self-inflicted injury, unintentional, or accidental) make sure it is specified type of shooting above and please only fill out the ""victim"" characteristics
+[tweet]",checkbox,Does the post mention/refer to their race or ethnicity?,"1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_age_2,xtwitter_coding_instrument_double_code,,checkbox,Does the post mention/refer to their age,"1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_sex_gender_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post mention/refer to their sex, gender, or sexual orientation?","1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_criminal_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post reference to criminal and/or civil record, incarceration, or interaction with the criminal justice system","1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_mental_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post mention/refer to the shooter's mental, behavioral, or psychiatric health?","1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_veteran_2,xtwitter_coding_instrument_double_code,,checkbox,"Does the post mention veteran status for the victim? (if self-inflicted, please only input in victim characteristics)","1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_stigma_2,xtwitter_coding_instrument_double_code,,checkbox,Is stigmatizing language used in reference to the victim?,"1, Yes",,,,,,[persons_mentioned_2(2)] = '1' or [persons_mentioned_2(3)] = '1',,,,characteristics_s_2,,
+shooter_race_1_2,xtwitter_coding_instrument_double_code,,checkbox,Race or ethnicity mentioned,"1, Black | 2, White | 3, Hispanic or Latino | 4, Asian (Includes Asian American, Native Hawaiian or Pacific Islander) | 5, Indigenous (includes American Indian or Alaska Native) | 6, General mention of ""race/racial"" or ""ethnicity"" | 7, Other",,,,,,[shooter_race_2(1)] = '1',,,,,,
+shooter_race_other_2,xtwitter_coding_instrument_double_code,,text,"If other race, please specify",,,,,,,[shooter_race_1_2(7)] = '1',,,,,,
+shooter_age_1_2,xtwitter_coding_instrument_double_code,,checkbox,Age of shooter mentioned,"1, 0-17y | 2, 18-34y | 3, 35-64y | 4, 65+",,,,,,[shooter_age_2(1)] = '1',,,,,,
+shooter_sex_gender1_2,xtwitter_coding_instrument_double_code,,checkbox,"Sex, Gender, or Sexual Orientation mentioned","1, Male | 2, Female | 3, Trans, Non-Binary, or LGBTQIA identities mentioned | 4, No mention",,,,,,[shooter_sex_gender_2(1)] = '1',,,,,,
+shooter_specify_sex_2,xtwitter_coding_instrument_double_code,,checkbox,Any specifications from the dropdown provided?,"1, Cis-Male | 2, Trans-Male | 3, Cis-Female | 4, Trans-Female | 5, Non-Binary | 6, Transgender | 7, Lesbian/Gay | 8, Bisexual | 9, Queer | 10, Intersex | 11, Asexual | 12, Other",,,,,,[shooter_sex_gender1_2(3)] = '1',,,,,,
+shooter_sex_other_2,xtwitter_coding_instrument_double_code,,text,"Other sex, gender, or sexual orientation mentioned",,,,,,,[shooter_specify_sex_2(12)] = '1',,,,,,
+shooter_mental1_2,xtwitter_coding_instrument_double_code,,checkbox,Specific descriptions of mental health,"1, General Mental Health or Illness | 2, Depression | 3, Anxiety | 4, PTSD | 5, Psychosis | 6, Schizophrenia | 7, History of Psychiatric Hospitalization | 8, Other",,,,,,[shooter_mental_2(1)] = '1',,,,,,
+shooter_mental_other_2,xtwitter_coding_instrument_double_code,,text,Specify other mental health description,,,,,,,[shooter_mental1_2(8)] = '1',,,,,,
+framing_2,xtwitter_coding_instrument_double_code,"ISSUE FRAMING
+
+Framing: Framing refers to ""underlying structures of belief, perception and appreciation"" on which distinct policy positions depend. It influences the way the issue is constructed, which is critical in influencing which actors get engaged in each process, the policy solutions proposed and the potential windows of opportunity that they were able to open.
+
+[tweet]",checkbox,What frames are used in the tweet/post?,"1, Morality (Sense of Right/Wrong NOT Emotion) | 2, Advocacy/Endorsement | 3, Emotional Appeal or Moral Outrage (Sympathy, Sorrow, Tragedy, or Sense of Injustice) | 4, Cultural Identity | 5, Equality or Equity | 6, Criminology/Policing | 7, Constitutionality/Jurisprudence | 8, Security/Defense/Protection | 9, Public Opinion | 10, Health and/or Public Health | 11, Partisan | 12, Informational ((ENTIRE tweet must be informational, is statistics are related to health/public health [ex. morbidity/mortality] make sure to check that as well) | 14, Religiosity or Spirituality | 13, None of the Above Fit",,,,,,,,,,,,
+blame_2,xtwitter_coding_instrument_double_code,"KINGDON'S POLICY FRAMEWORK DOMAINS
+
+Domain 1: The Problem Stream - What are the causes and consequences of firearm violence, how are they framed, and by whom?
+
+Causal or Blame Attribution: Persons, policies, or entities held responsible for firearm violence
+
+[tweet]",checkbox,What or who is blamed for gun violence?,"1, Mental Health and/or Illness | 2, Weak or lax gun laws | 3, Increased ownership, access, or availability of Firearms | 4, Decreased possession of firearms (not enough people with guns) | 5, Sociopolitical and Structural Determinants of Health (education, poverty, housing) | 6, Stereotyped/Biased/Racist Beliefs of a group of persons | 7, Guns in the hands of the wrong people | 8, Gang Violence | 9, Social Media | 10, Individuals or Groups of Policymakers (ex. Philadelphia Attorney General) | 11, Victim Blaming | 12, Substance Use | 13, Firearm Industry and Commerical Practices | 14, U.S. Gun Culture | 15, The Gun Lobby (NRA, Gun Owners of America) | 16, A Specific Political Party of Affiliation | 17, Hate or Hate Crimes (must specify hate/hate crime, can be co-selected with stereotyped/biased/racist beliefs if the tweet also includes specification around race/religion/sex/etc.). However, if this refers to just hate without specific designation then only select this code. | 18, Other | 19, No blame discussed/not applicable",,,,,,,,,,,,
+blame_party_2,xtwitter_coding_instrument_double_code,,dropdown,"Specific ""Political Party or Affiliation"" Blamed","1, Democrat/Liberal/Left | 2, Republican/Conservative/Right/MAGA | 3, Independent | 4, Other",,,,,,[blame_2(16)] = '1',,,,,,
+blame_other_2,xtwitter_coding_instrument_double_code,,text,"Specify ""other"" blamed",,,,,,,[blame_2(18)] = '1',,,,,,
+consequences_2,xtwitter_coding_instrument_double_code,"Consequences of Gun Violence
+
+[tweet]",checkbox,What are the consequences of gun violence specified?,"1, Economic | 2, Physical Health | 3, Mental Health or Illness | 4, Furthering the Cycle of Violence | 5, Secondary Trauma or Co-Victim Consequences (family/community members/siblings) | 6, Well-Being | 7, Other | 8, No consequences discussed",,,,,,,,,,,,
+consequences_other_2,xtwitter_coding_instrument_double_code,,text,"Specify ""other"" consequence",,,,,,,[consequences_2(7)] = '1',,,,,,
+policy_2,xtwitter_coding_instrument_double_code,"Domain 2: The Policy Stream - Definition: Particular policies proposed for addressing an identified problem, and figuring out if certain policies will work, or if existing policies are effective.
+
+Mentions of Firearm Policies
+
+[tweet]",checkbox,What are the policies mentioned to address gun violence?,"1, Generic or Nonspecific (ex. Reduction Programs, Initiatives, Reforms) | 2, Restrictive Firearm Ownership Policies | 3, Permissive Firearm Ownership Policies | 4, Funding for Community Violence Intervention Programs or Hospital Violence Intervention Programs | 5, Funding for Firearm Research | 6, Address Mental Health and Illness | 7, Address Substance Use Disorder | 8, Funding/Support for Law Enforcement/Police/or Criminal Justice System | 9, Hold the Firearm Industry Accountable | 10, Hold the Gun Lobby Accountable | 11, Address social and structural determinants of health | 12, Other | 13, No policies discussed",,,,,,,,,,,,
+policy_restrictive_2,xtwitter_coding_instrument_double_code,,checkbox,Specify Restrictive Firearm Ownership Policies,"1, Universal/Comprehensive/Expanded Background Checks | 2, Secure Firearm Storage Laws | 3, Child Access Prevention Laws | 4, Extreme Risk Protection Orders (Red-Flag) Laws | 5, Banning Ghost/3D Printed Guns | 6, Permit-to-Purchase | 7, Lost and Stolen Reporting | 8, Assault Weapons Ban | 9, Banning Private Sale of Long Guns | 10, High Capacity Magazine Bans | 11, Waiting Periods | 12, Domestic Violence Protection Orders | 13, Gun Buyback Programs | 14, Microstamping Requirements | 15, Age or Licensing Requirements | 16, None of the Above/Other",,,,,,[policy_2(2)] = '1',,,,,,
+policy_permissive_2,xtwitter_coding_instrument_double_code,,checkbox,Specify Permissive Firearm Ownership Policies,"1, Stand Your Ground/Castle Doctrine | 2, School Resource Officer | 3, Concealed Carry | 4, Arming Teachers | 5, Open Carry | 6, Preemption Laws | 7, Permitless Carry (Constitutional Carry) | 8, Prohibition on  Firearm Registries | 9, Protection of Lawful Commerce in Arms Act (PLCAA) | 10, Reciprocity Laws | 11, Enhanced Self-Defense Protections | 12, None of the Above/Other",,,,,,[policy_2(3)] = '1',,,,,,
+policy_other_2,xtwitter_coding_instrument_double_code,,text,"Specity ""other"" policy",,,,,,,[policy_2(12)] = '1',,,,,,
+addl_notes_2,xtwitter_coding_instrument_double_code,Conclusion,text,"If you have notes to add about the post, feel free to do that here",,,,,,,,,,,,,
